@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ArchViz Trader Global Design System - Theme Variables */
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #F1F3F4;
+  --text-primary: #000000;
+  --text-secondary: #6C757D;
+  --accent-color: #007BFF;
+  --success-color: #28A745;
+  --error-color: #DC3545;
+  --warning-color: #FFC107;
+  --info-color: #17A2B8;
+  --border-color: #E5E5E5;
+}
+
+/* Global Typography - Inter for UI */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Code snippets - Roboto Mono */
+code, pre, .font-mono {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+}
+
+/* Theme-aware backgrounds */
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-tertiary {
+  background-color: var(--bg-tertiary);
+}
+
+/* Theme-aware text colors */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-accent {
+  color: var(--accent-color);
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-error {
+  color: var(--error-color);
+}
+
+.text-warning {
+  color: var(--warning-color);
+}
+
+.text-info {
+  color: var(--info-color);
+}
+
+/* Theme-aware borders */
+.border-primary {
+  border-color: var(--border-color);
+}
+
+/* Theme-aware buttons */
+.btn-primary {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color) 80%, black);
+}
+
+.btn-secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: color-mix(in srgb, var(--bg-tertiary) 80%, black);
+}
+
+/* Theme-aware inputs */
+.input-primary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.input-primary:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+/* Smooth transitions for theme changes - respects reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* AdSense responsive container */
+.ad-container {
+  max-height: 20vh;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+/* Social media icons */
+.social-icon {
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+  transition: opacity 0.2s ease;
+}
+
+.social-icon:hover {
+  opacity: 0.7;
+}
+
+/* Theme preview swatches */
+.theme-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.theme-swatch:hover {
+  transform: scale(1.1);
+}
+
+.theme-swatch.active {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent-color);
+}
+
+/* Notification system */
+.notification-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 24rem;
+}
+
+.notification {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  animation: slide-in 0.3s ease forwards;
+}
+
+.notification-success {
+  background-color: color-mix(in srgb, var(--success-color) 15%, var(--bg-secondary));
+  border-left: 4px solid var(--success-color);
+}
+
+.notification-error {
+  background-color: color-mix(in srgb, var(--error-color) 15%, var(--bg-secondary));
+  border-left: 4px solid var(--error-color);
+}
+
+.notification-warning {
+  background-color: color-mix(in srgb, var(--warning-color) 15%, var(--bg-secondary));
+  border-left: 4px solid var(--warning-color);
+}
+
+.notification-info {
+  background-color: color-mix(in srgb, var(--info-color) 15%, var(--bg-secondary));
+  border-left: 4px solid var(--info-color);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.notification.exiting {
+  animation: slide-out 0.3s ease forwards;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .notification {
+    animation: none;
+  }
+
+  .notification.exiting {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 640px) {
+  .notification-container {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .mobile-full-width {
+    width: 100%;
+  }
+
+  .mobile-stack {
+    flex-direction: column;
+  }
+
+  .mobile-center {
+    text-align: center;
+    justify-content: center;
+  }
+}
