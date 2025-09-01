@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ArchViz Trader Global Design System - Theme Variables */
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #F1F3F4;
+  --text-primary: #000000;
+  --text-secondary: #6C757D;
+  --accent-color: #007BFF;
+  --success-color: #28A745;
+  --error-color: #DC3545;
+  --border-color: #E5E5E5;
+}
+
+[data-theme="light"] {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #F1F3F4;
+  --text-primary: #000000;
+  --text-secondary: #6C757D;
+  --accent-color: #007BFF;
+  --success-color: #28A745;
+  --error-color: #DC3545;
+  --border-color: #E5E5E5;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: #1A1A1A;
+  --bg-tertiary: #2D2D2D;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --accent-color: #1E90FF;
+  --success-color: #32CD32;
+  --error-color: #FF4757;
+  --border-color: #333333;
+}
+
+/* Global Typography - Inter for UI */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Code snippets - Roboto Mono */
+code, pre, .font-mono {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+}
+
+/* Theme-aware backgrounds */
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-tertiary {
+  background-color: var(--bg-tertiary);
+}
+
+/* Theme-aware text colors */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-accent {
+  color: var(--accent-color);
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-error {
+  color: var(--error-color);
+}
+
+/* Theme-aware borders */
+.border-primary {
+  border-color: var(--border-color);
+}
+
+/* Smooth transitions for theme changes - respects reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* AdSense responsive container */
+.ad-container {
+  max-height: 20vh;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+/* Social media icons */
+.social-icon {
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+  transition: opacity 0.2s ease;
+}
+
+.social-icon:hover {
+  opacity: 0.7;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
